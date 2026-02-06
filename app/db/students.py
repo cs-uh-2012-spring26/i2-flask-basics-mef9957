@@ -53,3 +53,7 @@ class StudentResource:
             return
 
         self.collection.insert_many(students)
+
+    def delete_student(self, email: str) -> bool:
+        result = self.collection.delete_one({EMAIL: email})
+        return result.deleted_count == 1
